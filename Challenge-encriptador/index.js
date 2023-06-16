@@ -9,17 +9,18 @@ function encriptar(){
       .replace(/a/gi,"ai")
       .replace(/o/gi,"ober")
       .replace(/u/gi,"ufat");
-   if (texto.length != 0){
-     document.getElementById("texto").value = textoCifrado;
+
+   if (texto){
+     document.getElementById("encriptado-resultado").classList.remove("ocultar")
+     document.getElementById("encriptado-estado").classList.add("ocultar")
+     document.getElementById("mensaje").innerText = textoCifrado;
+     document.getElementById("texto").value = "";
      tituloMensaje.textContent = "texto encriptado con exito";
      parrafo.textContent = "";
    } else{
       tituloMensaje.textContent = "Ningun mensaje fue encontrado";
       parrafo.textContent = "Ingresa el texto que desees encriptar o desencriptar";
-
-   }
-   
-   
+   }  
 }
 
 function desencriptar(){
@@ -33,15 +34,19 @@ function desencriptar(){
       .replace(/ai/gi,"a")
       .replace(/ober/gi,"o")
       .replace(/ufat/gi,"u");
-   if (texto.length != 0){
+
+   if (texto){
      document.getElementById("texto").value = textoCifrado;
      tituloMensaje.textContent = "texto desencriptado con exito";
      parrafo.textContent = "";
    } else{
       tituloMensaje.textContent = "Ningun mensaje fue encontrado";
       parrafo.textContent = "Ingresa el texto que desees encriptar o desencriptar";
-
-   }
-   
-   
+   }   
+}
+function copiar (){
+   let texto = document.getElementById("mensaje").innerText;
+   navigator.clipboard.writeText(texto) 
+   document.getElementById("encriptado-resultado").classList.add("ocultar")
+   document.getElementById("encriptado-estado").classList.remove("ocultar")
 }
